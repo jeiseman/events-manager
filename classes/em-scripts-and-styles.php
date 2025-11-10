@@ -371,11 +371,14 @@ class Scripts_and_Styles {
 		}
 		//maps api key
 		if( em_get_option('dbem_gmap_is_active') ){
-			if( em_get_option('dbem_google_maps_browser_key') ){
-				$em_localized_js['google_maps_api'] = em_get_option('dbem_google_maps_browser_key');
-			}
-			if( em_get_option('dbem_google_maps_styles') ){
-				$em_localized_js['google_maps_styles'] = json_decode(em_get_option('dbem_google_maps_styles'));
+			$em_localized_js['map_provider'] = em_get_option('dbem_map_provider', 'google');
+			if( $em_localized_js['map_provider'] == 'google' ){
+				if( em_get_option('dbem_google_maps_browser_key') ){
+					$em_localized_js['google_maps_api'] = em_get_option('dbem_google_maps_browser_key');
+				}
+				if( em_get_option('dbem_google_maps_styles') ){
+					$em_localized_js['google_maps_styles'] = json_decode(em_get_option('dbem_google_maps_styles'));
+				}
 			}
 		}
 		//debug mode
