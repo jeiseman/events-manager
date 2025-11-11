@@ -10,6 +10,8 @@ module.exports = function(grunt) {
 			'parts/selectize.js',
 			'parts/tippy.js',
 			'parts/maps.js',
+			'parts/google.js',
+			'parts/osm.js',
 			'parts/modal.js',
 			'parts/search.js',
 			'parts/calendar.js',
