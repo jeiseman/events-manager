@@ -105,7 +105,16 @@ em_maps_provider.init = function(){
 					if( data.length > 0 ){
 						jQuery('#location-latitude').val(data[0].lat);
 						jQuery('#location-longitude').val(data[0].lon);
+					}else{
+						jQuery('#location-latitude').val(0);
+						jQuery('#location-longitude').val(0);
 					}
+					this.refresh_map_location();
+				}).fail((jqXHR, textStatus, errorThrown) => {
+					console.log("Error fetching location from Nominatim: " + textStatus);
+					console.log(errorThrown);
+					jQuery('#location-latitude').val(0);
+					jQuery('#location-longitude').val(0);
 					this.refresh_map_location();
 				});
 			}
