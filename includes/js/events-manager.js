@@ -2409,6 +2409,7 @@ var em_maps_provider_osm = {
 					this.map.setView(position, 14);
 					jQuery('#em-map').show();
 					jQuery('#em-map-404').hide();
+					this.map.invalidateSize();
 				} else {
 					jQuery('#em-map').hide();
 					jQuery('#em-map-404').show();
@@ -2432,6 +2433,7 @@ var em_maps_provider_osm = {
 							this.map.setView(position, 14);
 							jQuery('#em-map').show();
 							jQuery('#em-map-404').hide();
+							this.map.invalidateSize();
 							jQuery('#em-map-404 .em-loading-maps').hide();
 						}else{
 							jQuery('#em-map').hide();
@@ -2552,6 +2554,7 @@ var em_maps_provider_osm = {
 			}).addTo(this.maps[map_id]);
 			this.maps_markers[map_id] = L.marker(position).addTo(this.maps[map_id]);
 			this.maps_markers[map_id].bindPopup(jQuery('#em-location-map-info-'+map_id+' .em-map-balloon').get(0).innerHTML).openPopup();
+			this.maps[map_id].invalidateSize();
 		}
 	}
 };
