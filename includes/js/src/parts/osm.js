@@ -101,7 +101,9 @@ em_maps_provider.init = function(){
 				address = ( address == '' ) ? address+jQuery('#location-country option:selected').text():address+', '+jQuery('#location-country option:selected').text();
 			}
 			if( address != '' && jQuery('#em-map').length > 0 ){
+				alert("Searching for address: " + address); // DEBUG
 				jQuery.getJSON('https://nominatim.openstreetmap.org/search?format=json&q=' + address, (data) => {
+					alert("Received data: " + JSON.stringify(data)); // DEBUG
 					if( data.length > 0 ){
 						jQuery('#location-latitude').val(data[0].lat);
 						jQuery('#location-longitude').val(data[0].lon);
@@ -111,6 +113,7 @@ em_maps_provider.init = function(){
 					}
 					this.refresh_map_location();
 				}).fail((jqXHR, textStatus, errorThrown) => {
+					alert("Error fetching location: " + textStatus); // DEBUG
 					console.log("Error fetching location from Nominatim: " + textStatus);
 					console.log(errorThrown);
 					jQuery('#location-latitude').val(0);
